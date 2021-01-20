@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworld
+  labels:
+    role: helloworld
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      role: helloworld
+      tier: web
+  template:
+    metadata:
+      labels:
+        role: helloworld
+        tier: web
+    spec:
+      containers:
+      - name: helloworld-app
+        image: cabrecri/gs-spring-boot-docker
+        ports:
+        - containerPort: 8080
